@@ -31,7 +31,7 @@ Se recomienda realizar la migración o búsqueda de Usuarios a primeras horas de
 - "csv-parser": "^3.1.0"
 - "dotenv": "^16.4.7"
 
-## Esctructura de carpetas y archivos
+## Estructura del proyecto
 
 | Carpeta       | Descripción                                                      |
 | ------------- | ---------------------------------------------------------------- |
@@ -52,9 +52,7 @@ Se recomienda realizar la migración o búsqueda de Usuarios a primeras horas de
 | README.md     | Archivo de documentación de la app.                              |
 | tsconfig.json | Archivo de configuración de typescript.                          |
 
-## Entornos
-
-### Desarrollo
+## Inicialización
 
 Ejecute los siguientes pasos desde la raíz (/) del proyecto:
 
@@ -66,34 +64,12 @@ npm install
 
 2. Ejecutar acción/proceso (ir a los casos de uso)
 
-### Producción
+## Casos de uso
 
-Ejecute los siguientes pasos desde la raíz (/) del proyecto:
-
-1. Instalar dependencias
-
-```bash
-npm install
-```
-
-2. Construir aplicación para producción
-
-```bash
-npm run build
-```
-
-3. Inicializar entorno de producción
-
-```bash
-npm run start
-```
-
-# CASOS DE USO
-
-## 1. Auditoría de Usuarios por cambio de correo
+### 1. Auditoría de usuarios por cambio de correo
 
 `npm run audit-users-by-change-of-email`
 
-## 2. Buscar Usuarios con acceso a PIANO por cierto permiso
+### 2. Obtener usuarios con acceso a PIANO por cierto permiso
 
 `npm run read-users-piano-by-permission`
