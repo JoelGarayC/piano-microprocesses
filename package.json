@@ -1,0 +1,20 @@
+{
+  "name": "procesos_piano",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "read-users-piano-by-permission": "ts-node ./src/actions/read-users-piano-by-permission.ts",
+    "audit-users-by-change-of-email": "ts-node ./src/actions/users-audit-by-change-of-email.ts"
+  },
+  "keywords": [],
+  "author": "Pablo El Maldy",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "csv-parser": "^3.1.0",
+    "dotenv": "^16.4.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
