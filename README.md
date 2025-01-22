@@ -64,11 +64,7 @@ Ejecute los siguientes pasos desde la raíz (/) del proyecto:
 npm install
 ```
 
-2. Inicializar entorno de desarrollo
-
-```bash
-npm run dev
-```
+2. Ejecutar acción/proceso (ir a los casos de uso)
 
 ### Producción
 
@@ -94,10 +90,10 @@ npm run start
 
 # CASOS DE USO
 
-## Auditoría de Usuarios por cambio de correo
+## 1. Auditoría de Usuarios por cambio de correo
 
 `npm run audit-users-by-change-of-email`
 
-## Buscar Usuarios con acceso a PIANO por cierto permiso
+## 2. Buscar Usuarios con acceso a PIANO por cierto permiso
 
 `npm run read-users-piano-by-permission`
