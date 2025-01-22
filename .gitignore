@@ -1,4 +1,9 @@
 .env
 node_modules
-/src/data/outputs/**/*.csv
-src/data/outputs/**/*.csv
+src/data/outputs/**/**.txt
+src/data/outputs/**/**.csv
+src/data/outputs/**/**.xlsx
+
+src/data/inputs/**/**.txt
+src/data/inputs/**/**.csv
+src/data/inputs/**/**.xlsx
