@@ -1,6 +1,6 @@
 {
-  "name": "piano_microprocceses",
-  "version": "1.1.0",
+  "name": "piano-microprocesses",
+  "version": "1.1.1",
   "main": "index.js",
   "scripts": {
     "audit-users-by-email-change": "ts-node ./src/actions/audit-users-by-email-change.ts",
