@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "read-users-piano-by-permission": "ts-node ./src/actions/read-users-piano-by-permission.ts",
-    "audit-users-by-change-of-email": "ts-node ./src/actions/users-audit-by-change-of-email.ts"
+    "audit-users-by-change-of-email": "ts-node ./src/actions/users-audit-by-change-of-email.ts",
+    "read-users-piano-by-permission": "ts-node ./src/actions/read-users-piano-by-permission.ts"
   },
   "keywords": [],
   "author": "Pablo El Maldy",

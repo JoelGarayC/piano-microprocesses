@@ -1,0 +1,103 @@
+# MICROPROCESOS POR PIANO APIS
+
+El proyecto de microprocesos de piano por apis se encarga de realizar procesos pequeños para cierto fin.
+
+## IMPORTANTE
+
+En desarrollo crear el archivo .env con las variables creadas ejemplo en el archivo .env.example
+
+## Tecnologías
+
+- Node (20.0.0)
+
+Nota en Ubuntu 18 o superior instalar ts-node de forma global:
+
+```bash
+npm install -g ts-node
+```
+
+<!-- ## Horarios
+
+Se recomienda realizar la migración o búsqueda de Usuarios a primeras horas de la mañana (4am - 7am aprox) debido a la demanda y alto tráfico de red dúrante el día. -->
+
+## Dependencias npm de desarrollo
+
+- "ts-node": "^10.9.2"
+- "typescript": "^5.7.3"
+
+## Dependencias npm de producción
+
+- "axios": "^1.7.9"
+- "csv-parser": "^3.1.0"
+- "dotenv": "^16.4.7"
+
+## Esctructura de carpetas y archivos
+
+| Carpeta       | Descripción                                                      |
+| ------------- | ---------------------------------------------------------------- |
+| node_modules  | Librerias de JS.                                                 |
+| src           | Contiene la estructura de carpetas del proyecto.                 |
+| config        | Contiene la configuración obtenida por las variables de entorno. |
+| actions       | Contiene los actions de la app.                                  |
+| helpers       | Contiene los helpers de la app.                                  |
+| data          | Contiene los archivos de entrada y salida de la app.             |
+| properties    | Contiene las propiedades de la app.                              |
+| types         | Contiene los types de la app.                                    |
+| utils         | Contiene los utils de la app.                                    |
+| .env          | Variables de entorno.                                            |
+| .env.example  | Variables de entorno de ejemplo.                                 |
+| .gitignore    | Archivo de git para ignorar archivos y/o carpetas.               |
+| index.ts      | Archivo inicializador de la app.                                 |
+| package.json  | Archivo de configuración del proyecto.                           |
+| README.md     | Archivo de documentación de la app.                              |
+| tsconfig.json | Archivo de configuración de typescript.                          |
+
+## Entornos
+
+### Desarrollo
+
+Ejecute los siguientes pasos desde la raíz (/) del proyecto:
+
+1. Instalar dependencias
+
+```bash
+npm install
+```
+
+2. Inicializar entorno de desarrollo
+
+```bash
+npm run dev
+```
+
+### Producción
+
+Ejecute los siguientes pasos desde la raíz (/) del proyecto:
+
+1. Instalar dependencias
+
+```bash
+npm install
+```
+
+2. Construir aplicación para producción
+
+```bash
+npm run build
+```
+
+3. Inicializar entorno de producción
+
+```bash
+npm run start
+```
+
+# CASOS DE USO
+
+## Auditoría de Usuarios por cambio de correo
+
+`npm run audit-users-by-change-of-email`
+
+## Buscar Usuarios con acceso a PIANO por cierto permiso
+
+`npm run read-users-piano-by-permission`
