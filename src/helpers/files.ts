@@ -1,64 +1,94 @@
-import { writeFile } from 'fs'
-import { errorMessage, warningMessage } from '../utils/alerts'
+import ExcelJS from 'exceljs'
+import { writeFileSync } from 'fs'
+
+import { errorMessage, successMessage } from '../utils/alerts'
 import { IS_PROD } from '../utils/constants'
 
-export enum ExtensionType {
-  CSV = 'csv',
-  TXT = 'txt'
-}
-
-export enum ActionType {
-  REGISTER = 'register',
-  UPDATE = 'update'
-}
+export type ExtensionType = 'csv' | 'txt'
 
 export enum LogType {
   ERROR = 'errors',
   SUCCESS = 'success'
 }
 
-type GenerateFile = {
-  arcSite: string
-  headers?: { [key: string]: any }
-  description: string
+type GeneratePlainFile = {
+  text: string
   extension: ExtensionType
-  action?: string
-  actionType?: ActionType
   separator?: string
-  logType?: LogType
   outputDir?: string
-  exportDate?: string
-  nameFile?: string
+  nameFile: string
+  hasDate?: boolean
 }
 
 const ENV: string = IS_PROD ? 'prod' : 'dev'
 
-export const generateDataFile = ({
-  arcSite = '',
-  headers = {},
-  description = '',
-  extension = ExtensionType.CSV,
-  separator = ',',
-  outputDir = 'outputs',
-  exportDate = '',
-  nameFile = 'data'
-}: GenerateFile) => {
-  let keys = ''
-  Object.keys(headers).map((key) => {
-    keys = `${keys}${key}${separator}`
-  })
-  keys = keys.substring(0, keys.length - 1)
+const newExportDate = () => {
+  const currentDate = new Date()
+  return `${currentDate.toDateString()} ${currentDate
+    .toTimeString()
+    .replaceAll(':', ' ')}`
+}
 
-  const text = `${keys}${description}`
+export const generatePlainFile = ({
+  text,
+  extension,
+  outputDir = 'outputs',
+  nameFile,
+  hasDate = true
+}: GeneratePlainFile) => {
+  const fullFileName = `${nameFile}-${ENV}${
+    hasDate ? ` ${newExportDate()}` : ''
+  }.${extension}`
+
   try {
-    writeFile(
-      `src/data/${outputDir}/${nameFile}-${arcSite}-${ENV} ${exportDate}.${extension}`,
-      text,
-      'utf8',
-      (err) => {
-        if (err) throw err
-        console.log(warningMessage(`DATA CREADA EN LA CARPETA '${outputDir}'`))
-      }
+    writeFileSync(`src/data/${outputDir}/${fullFileName}`, text, 'utf8')
+    console.log(
+      successMessage(
+        `${extension.toUpperCase()} ${fullFileName} generado correctamente en la carpeta '${outputDir}'`
+      )
+    )
+  } catch (error) {
+    console.log(errorMessage(error))
+  }
+}
+
+type GenerateExcelFile = {
+  headers: string[]
+  rows: any[]
+  outputDir?: string
+  workbookName: string
+  sheetName: string
+  hasDate?: boolean
+}
+
+export const generateExcelFile = async ({
+  headers,
+  rows,
+  outputDir = 'outputs',
+  workbookName,
+  sheetName,
+  hasDate = true
+}: GenerateExcelFile) => {
+  const workbook = new ExcelJS.Workbook()
+  const worksheet = workbook.addWorksheet(sheetName)
+
+  if (headers.length) {
+    worksheet.addRow(headers)
+  }
+
+  rows.forEach((row) => worksheet.addRow(row))
+
+  const fullFileName = `${workbookName}-${ENV}${
+    hasDate ? ` ${newExportDate()}` : ''
+  }.xlsx`
+
+  try {
+    await workbook.xlsx.writeFile(`src/data/${outputDir}/${fullFileName}`)
+
+    console.log(
+      successMessage(
+        `Excel ${fullFileName} generado correctamente en la carpeta '${outputDir}'`
+      )
     )
   } catch (error) {
     console.log(errorMessage(error))

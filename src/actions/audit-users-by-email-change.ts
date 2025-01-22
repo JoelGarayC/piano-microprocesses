@@ -3,13 +3,16 @@ import csvParser from 'csv-parser'
 import { createReadStream } from 'fs'
 
 import config from '../config'
-import { ExtensionType, generateDataFile } from '../helpers/files'
+import { generatePlainFile } from '../helpers/files'
 import props from '../properties'
+import { errorMessage } from '../utils/alerts'
 import { formatHeaderKeys, formatRowData } from '../utils/formats'
 
 const configParser = {
   separator: ';'
 }
+
+const ARC_SITE: string = config.ARC_SITE
 
 /*
  *  FORMATO DE CSV: CABECERAS
@@ -18,14 +21,14 @@ const configParser = {
  *  Nota: (*) requerido
  */
 
-const ARC_SITE: string = config.ARC_SITE
-const routePath = `src/data/inputs/${ARC_SITE}/usuarios_suscriptores_ge_20_01_25.csv`
-
 /*
- * en false devuelve la información de manera detallada a nivel de campo
- * en true muestra toda la información de los cambios en un solo campo
+ * onlyRowByUser (boolean):
+ * - false => Devuelve la información de manera detallada a nivel de campo
+ * - true => Muestra toda la información de los cambios en un solo campo
+ * routePath (string): path relativo del archivo a usar como input
  */
-const ONLY_ROW_BY_USER = false
+const onlyRowByUser = false
+const routePath = `src/data/inputs/${ARC_SITE}/usuarios_suscriptores_ec_20_01_25.csv`
 
 const main = async () => {
   const dataArray: any[] = []
@@ -38,6 +41,8 @@ const main = async () => {
     .on('end', async () => {
       let newFileData = ''
       for (let index = 0; index < dataArray.length; index++) {
+        if (index > 150) break
+
         let formatData = formatHeaderKeys(dataArray[index])
 
         try {
@@ -59,7 +64,7 @@ const main = async () => {
             console.log(`falló en ${formatData.uid} ${formatData.email}`)
           } else {
             console.log(
-              'verificando usuario',
+              'Verificando usuario',
               index + 1,
               formatData.email,
               '...'
@@ -91,7 +96,7 @@ const main = async () => {
                 )}`
               )
 
-              if (ONLY_ROW_BY_USER) {
+              if (onlyRowByUser) {
                 const newHeaders = {
                   uid: formatData.uid.toString(),
                   email: formatData.email.toString(),
@@ -130,59 +135,48 @@ const main = async () => {
         } catch (error) {
           if (isAxiosError(error)) {
             console.log(
-              `Solicitud errónea en fila ${index + 1}: ${formatData.uid} - ${
-                formatData.email
-              }`
+              errorMessage(
+                `Solicitud errónea en fila ${index + 1}: ${formatData.uid} - ${
+                  formatData.email
+                }`
+              )
             )
-            console.log(error.message)
+            console.log(errorMessage(error.message))
           } else {
-            console.log(error)
+            console.log(errorMessage(error))
           }
         }
       }
 
-      const currentDate = new Date()
-
-      console.log('new file data:', newFileData)
-
       // genera nueva data actualizada
       if (newFileData) {
-        let headers: Object | undefined
-        if (ONLY_ROW_BY_USER) {
-          headers = {
-            uid: '',
-            email: '',
-            quantity_changes: '',
-            description: ''
-          }
+        let headers: string[] = []
+        if (onlyRowByUser) {
+          headers = ['uid', 'email', 'quantity_changes', 'description']
         } else {
-          headers = {
-            uid: '',
-            email: '',
-            quantity_changes: '',
-            actor_id: '',
-            actor_type: '',
-            country: '',
-            city: '',
-            user_agent: '',
-            ip_address: '',
-            date: '',
-            previous_value: '',
-            new_value: ''
-          }
+          headers = [
+            'uid',
+            'email',
+            'quantity_changes',
+            'actor_id',
+            'actor_type',
+            'country',
+            'city',
+            'user_agent',
+            'ip_address',
+            'date',
+            'previous_value',
+            'new_value'
+          ]
         }
 
-        generateDataFile({
-          arcSite: ARC_SITE,
-          separator: configParser.separator,
-          headers: headers,
+        const text = `${headers.join(configParser.separator)}${newFileData}`
+
+        generatePlainFile({
           outputDir: `outputs/${ARC_SITE}`,
-          description: newFileData,
-          extension: ExtensionType.CSV,
-          nameFile: 'users-audit',
-          exportDate: `${currentDate.toDateString()} ${currentDate
-            .toTimeString()
-            .replaceAll(':', ' ')}`
+          text,
+          extension: 'csv',
+          nameFile: 'audit-users-by-email-change'
         })
       }
     })

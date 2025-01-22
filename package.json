@@ -1,10 +1,11 @@
 {
-  "name": "procesos_piano",
-  "version": "1.0.0",
+  "name": "piano_microprocceses",
+  "version": "1.1.0",
   "main": "index.js",
   "scripts": {
-    "audit-users-by-change-of-email": "ts-node ./src/actions/users-audit-by-change-of-email.ts",
-    "read-users-piano-by-permission": "ts-node ./src/actions/read-users-piano-by-permission.ts"
+    "audit-users-by-email-change": "ts-node ./src/actions/audit-users-by-email-change.ts",
+    "team-members-by-permissions": "ts-node ./src/actions/team-members-by-permissions.ts",
+    "users-of-each-contract-of-each-site-licensee": "ts-node ./src/actions/users-of-each-contract-of-each-site-licensee.ts"
   },
   "keywords": [],
   "author": "Pablo El Maldy",
@@ -14,6 +15,7 @@
     "axios": "^1.7.9",
     "csv-parser": "^3.1.0",
     "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   }

@@ -16,9 +16,9 @@ Nota en Ubuntu 18 o superior instalar ts-node de forma global:
 npm install -g ts-node
 ```
 
-<!-- ## Horarios
+## Horarios
 
-Se recomienda realizar la migración o búsqueda de Usuarios a primeras horas de la mañana (4am - 7am aprox) debido a la demanda y alto tráfico de red dúrante el día. -->
+Se recomienda realizar las búsquedas masivas a primeras horas de la mañana (4am - 7am aprox) debido a la demanda y alto tráfico de red dúrante el día.
 
 ## Dependencias npm de desarrollo
 
@@ -30,6 +30,7 @@ Se recomienda realizar la migración o búsqueda de Usuarios a primeras horas de
 - "axios": "^1.7.9"
 - "csv-parser": "^3.1.0"
 - "dotenv": "^16.4.7"
+- "exceljs": "^4.4.0"
 
 ## Estructura del proyecto
 
@@ -68,8 +69,12 @@ npm install
 
 ### 1. Auditoría de usuarios por cambio de correo
 
-`npm run audit-users-by-change-of-email`
+`npm run audit-users-by-email-change`
 
 ### 2. Obtener usuarios con acceso a PIANO por cierto permiso
 
-`npm run read-users-piano-by-permission`
+`npm run team-members-by-permissions`
+
+### 3. Obtener los usuarios por cada contrato de las licencias de sitio
+
+`npm run users-of-each-contract-of-each-site-licensee`

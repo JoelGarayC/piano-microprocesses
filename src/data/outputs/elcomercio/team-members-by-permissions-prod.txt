@@ -1,0 +1,16 @@
+Piano Users elcomercio Wed Jan 22 2025
+annmarie.smetona+elcomercio@piano.io null null tiene manage_team
+jason.zappolo+trome@piano.io Global Admin tiene manage_team
+jason.zappolo+gestion@piano.io Piano Admin tiene manage_team
+guillermo.izarnotegui@comercio.com.pe Guillermo Izarnotegui tiene manage_team
+lucia.vargasf@comercio.com.pe Lucia Vargas tiene manage_team
+angel.pilares@comercio.com.pe Angel Pilares tiene manage_team
+gisella.salmon@comercio.com.pe Gisella Salmon tiene manage_team
+milagros.guzman@comercio.com.pe Milagros Guzman tiene manage_team
+paolorenato.cubamelgar@comdatagroup.com Paolo Renato Cuba Melgar tiene manage_team
+elisa.vivar@comercio.com.pe Elisa Vivar tiene manage_team
+milagros.cueva@comercio.com.pe Milagros Cueva tiene manage_team
+leonel.navarro@fractalservicios.pe Leonel Navarro tiene manage_team
+j.prado@rpalatam.com.pe Jhonny Prado tiene manage_team
+javier.rios@comercio.com.pe Javier Rios tiene manage_team
+mitchell.trigueros@comercio.com.pe Mitchell Trigueros tiene manage_team
