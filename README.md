@@ -4,7 +4,7 @@ El proyecto de microprocesos de piano por apis se encarga de realizar procesos p
 
 ## IMPORTANTE
 
-En desarrollo crear el archivo .env con las variables creadas ejemplo en el archivo .env.example
+En el ambiente local crear el archivo .env con las variables creadas ejemplo en el archivo .env.example
 
 ## Tecnologías
 

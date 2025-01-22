@@ -1,2 +1,4 @@
 .env
 node_modules
+/src/data/outputs/**/*.csv
+src/data/outputs/**/*.csv
