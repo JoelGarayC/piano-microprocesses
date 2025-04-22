@@ -5,7 +5,12 @@
   "scripts": {
     "audit-users-by-email-change": "ts-node ./src/actions/audit-users-by-email-change.ts",
     "team-members-by-permissions": "ts-node ./src/actions/team-members-by-permissions.ts",
-    "users-of-each-contract-of-each-site-licensee": "ts-node ./src/actions/users-of-each-contract-of-each-site-licensee.ts"
+    "users-of-each-contract-of-each-site-licensee": "ts-node ./src/actions/users-of-each-contract-of-each-site-licensee.ts",
+    "format-dates": "ts-node ./src/actions/format-date.ts",
+    "asign-custom-term": "ts-node ./src/actions/asign-custom-term-by-brand.ts",
+    "patch-customfields-by-uid": "ts-node ./src/actions/patch-customfields-by-uid.ts",
+    "search-users-by-email": "ts-node ./src/actions/search-users-by-email.ts",
+    "search-users-by-email-sso": "ts-node ./src/actions/search-users-by-email-in-sso.ts"
   },
   "keywords": [],
   "author": "Pablo El Maldy",

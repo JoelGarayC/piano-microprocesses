@@ -28,7 +28,7 @@ const ARC_SITE: string = config.ARC_SITE
  * routePath (string): path relativo del archivo a usar como input
  */
 const onlyRowByUser = false
-const routePath = `src/data/inputs/${ARC_SITE}/usuarios_suscriptores_ec_20_01_25.csv`
+const routePath = `src/data/inputs/${ARC_SITE}/subscriptions-2025-03-24-gestion.csv`
 
 const main = async () => {
   const dataArray: any[] = []
@@ -41,7 +41,7 @@ const main = async () => {
     .on('end', async () => {
       let newFileData = ''
       for (let index = 0; index < dataArray.length; index++) {
-        if (index > 150) break
+        // if (index > 5000) break
 
         let formatData = formatHeaderKeys(dataArray[index])
 
