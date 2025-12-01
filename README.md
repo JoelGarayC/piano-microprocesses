@@ -23,13 +23,13 @@ Se recomienda realizar las búsquedas masivas a primeras horas de la mañana (4a
 ## Dependencias npm de desarrollo
 
 - "ts-node": "^10.9.2"
-- "typescript": "^5.7.3"
+- "typescript": "^5.9.3"
 
 ## Dependencias npm de producción
 
-- "axios": "^1.7.9"
-- "csv-parser": "^3.1.0"
-- "dotenv": "^16.4.7"
+- "axios": "^1.13.2"
+- "csv-parser": "^3.2.0"
+- "dotenv": "^17.2.3"
 - "exceljs": "^4.4.0"
 
 ## Estructura del proyecto
